@@ -2,24 +2,15 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - CSS Grid - Badminton Court</title>
+  <title>Badminton Court</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 
-  
-  <p style="color: aliceblue;text-align: center;">
-    <input type="text" id ='inp1'>
-    <input type="text" id ='inp2'>
-    <button style="color: green;text-align: center;" onclick="inputan()"> ok</button>
-    <button style="color: green;text-align: center;" onclick="reset()"> reset</button>
-  </p>
-
-
-
 <div class="court">
-
         <div ></div>
         <div onclick="pindah1()" >
           <p id = "inpp2" style="background-color: green;text-align: center;"></p>
@@ -42,7 +33,13 @@
             <button onclick="plus1()" style="width:100%;height: 100%;" id ='bt1'>+</button>
             <button onclick="plus2()" style="width:100%;height: 100%;background-color: green;display: none;" id ='bt11'>+</button>
         </div>
-        <div ></div>
+        <div >  
+         
+          <input type="text" id ='inp1'>
+          <input type="text" id ='inp2'>
+          <button style="color: green;text-align: center;" onclick="inputan()"> ok</button>
+          <button style="color: green;text-align: center;" onclick="reset()"> reset</button>
+        </div>
         <div></div>
         <div></div>
         <div></div>
@@ -73,11 +70,6 @@
 <script src="firebase.js"></script>
   <script>
   
- 
- 
- 
-
-
   var config = {
   apiKey: "AIzaSyBYVwVZUBLXSm7iR5Fp6k-dziJGEuhwExk",
   authDomain: "megaboth007.firebaseapp.com",
@@ -108,22 +100,16 @@ for (let i = 0; i < 5; i++) {
   datab2.on("value", function(snapshot) {document.getElementById("score2").innerHTML= snapshot.val();});
   datab1.on("value", function(snapshot) {document.getElementById("ss2").innerHTML= snapshot.val();});
   datab2.on("value", function(snapshot) {document.getElementById("ss1").innerHTML= snapshot.val();});
-
   datain1.on("value", function(snapshot) {document.getElementById("inpp1").innerHTML= snapshot.val();});
   datain2.on("value", function(snapshot) {document.getElementById("inpp2").innerHTML= snapshot.val();});
-
   datain11.on("value", function(snapshot) {document.getElementById("inpp11").innerHTML= snapshot.val();});
   datain21.on("value", function(snapshot) {document.getElementById("inpp21").innerHTML= snapshot.val();});
 
   var a1 = 0;
   var b1 = 0;
-  
+
   dbRef.ref("/tinc").on('value', snap => a1 = snap.val());
   dbRef.ref("/tinb").on('value', snap => b1 = snap.val());
- 
-  
-  var in2 = document.getElementById('inp1').value ;
-  
 
   function inputan(){
     var in1 = document.getElementById('inp1').value ;
@@ -132,9 +118,6 @@ for (let i = 0; i < 5; i++) {
     db.ref("/inp2").set(in2);
     console.log(in1)
   }
-
- 
-
 
   function plus1(){
     a1=a1+1;
@@ -170,65 +153,48 @@ function reset(){
 }
 
 function pindah1(){
-  document.getElementById('score1').style.display = 'none';
-  document.getElementById('score2').style.display = 'none';
-
-  document.getElementById('ss1').style.display    =  'block' ;
-  document.getElementById('ss2').style.display    =  'block' ;
-
-  document.getElementById('bt1').style.display    =  'none' ;
-  document.getElementById('bt2').style.display    =  'none' ;
-  document.getElementById('bt3').style.display    =  'none' ;
-  document.getElementById('bt4').style.display    =  'none' ;
-
-  document.getElementById('bt11').style.display    =  'block' ;
-  document.getElementById('bt21').style.display    =  'block' ;
-  document.getElementById('bt31').style.display    =  'block' ;
-  document.getElementById('bt41').style.display    =  'block' ;
-
- 
-  document.getElementById('inpp21').style.display    =  'block' ;
-  document.getElementById('inpp11').style.display    =  'block' ;
+  document.getElementById('score1').style.display   = 'none';
+  document.getElementById('score2').style.display   = 'none';
+  document.getElementById('ss1').style.display      =  'block' ;
+  document.getElementById('ss2').style.display      =  'block' ;
+  document.getElementById('bt1').style.display      =  'none' ;
+  document.getElementById('bt2').style.display      =  'none' ;
+  document.getElementById('bt3').style.display      =  'none' ;
+  document.getElementById('bt4').style.display      =  'none' ;
+  document.getElementById('bt11').style.display     =  'block' ;
+  document.getElementById('bt21').style.display     =  'block' ;
+  document.getElementById('bt31').style.display     =  'block' ;
+  document.getElementById('bt41').style.display     =  'block' ;
+  document.getElementById('inpp21').style.display   =  'block' ;
+  document.getElementById('inpp11').style.display   =  'block' ;
   document.getElementById('inpp2').style.display    =  'none' ;
   document.getElementById('inpp1').style.display    =  'none' ;
-  
-  
-
 
 }
+
 function pindah2(){
-  document.getElementById('ss1').style.display= 'none';
-  document.getElementById('ss2').style.display= 'none';
-
-  document.getElementById('score1').style.display=  'block' ;
-  document.getElementById('score2').style.display=  'block' ;
-
+  document.getElementById('ss1').style.display    = 'none';
+  document.getElementById('ss2').style.display    = 'none';
+  document.getElementById('score1').style.display =  'block' ;
+  document.getElementById('score2').style.display =  'block' ;
   document.getElementById('bt1').style.display    =  'block' ;
   document.getElementById('bt2').style.display    =  'block' ;
   document.getElementById('bt3').style.display    =  'block' ;
   document.getElementById('bt4').style.display    =  'block' ;
-
-  document.getElementById('bt11').style.display    =  'none' ;
-  document.getElementById('bt21').style.display    =  'none' ;
-  document.getElementById('bt31').style.display    =  'none' ;
-  document.getElementById('bt41').style.display    =  'none' ;
-
-  document.getElementById('inpp2').style.display    =  'block' ;
-  document.getElementById('inpp1').style.display    =  'block' ;
-  document.getElementById('inpp21').style.display    =  'none' ;
-  document.getElementById('inpp11').style.display    =  'none' ;
-
-  
+  document.getElementById('bt11').style.display   =  'none' ;
+  document.getElementById('bt21').style.display   =  'none' ;
+  document.getElementById('bt31').style.display   =  'none' ;
+  document.getElementById('bt41').style.display   =  'none' ;
+  document.getElementById('inpp2').style.display  =  'block' ;
+  document.getElementById('inpp1').style.display  =  'block' ;
+  document.getElementById('inpp21').style.display =  'none' ;
+  document.getElementById('inpp11').style.display =  'none' ;
 }
-
-
-  
 
 
 }
 
     
- 
   </script>
 </body>
 </html>
