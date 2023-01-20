@@ -1,76 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Badminton Court</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
+<html>
+<title>Menu Utama</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<body style="background-image: url('brain-lede-jumbo-v2.gif') ;" >
 
-</head>
-<body>
-
-<div class="court">
-        <div ></div>
-        <div onclick="pindah1()" >
-          <p id = "inpp2" style="background-color: green;text-align: center;"></p>
-          <p id = "inpp21" style="background-color: aliceblue;text-align: center;display: none;"></p>
-        </div>
-        <div>
-           <p style="color: aliceblue;text-align: center;" id="score1" ></p> 
-           <p style="color: green;text-align: center;display: none;" id="ss1"></p> 
-        </div>
-        <div> 
-          <p style="color: aliceblue;text-align: center;" id="score2"></p> 
-          <p style="color: green;text-align: center;display: none;" id="ss2"></p> 
-        </div>
-        <div onclick="pindah2()"  >
-          <p id = "inpp1" style="background-color: aliceblue;text-align: center;"></p>
-          <p id = "inpp11" style="background-color: green;text-align: center;display: none;"></p>
-        </div>
-        <div></div>
-        <div>
-            <button onclick="plus1()" style="width:100%;height: 100%;" id ='bt1'>+</button>
-            <button onclick="plus2()" style="width:100%;height: 100%;background-color: green;display: none;" id ='bt11'>+</button>
-        </div>
-        <div >  
-         
-          <input type="text" id ='inp1'>
-          <input type="text" id ='inp2'>
-          <button style="color: green;text-align: center;" onclick="inputan()"> ok</button>
-          <button style="color: green;text-align: center;" onclick="reset()"> reset</button>
-        </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div >
-          <button onclick="plus2()"  style="width:100%;height: 100%;" id ='bt2'>+</button>
-          <button onclick="plus1()"  style="width:100%;height: 100%;background-color: green;display: none;" id ='bt21'>+</button>
-        </div>
-        <div >
-          <button onclick="minus1()" style="width:100%;height: 100%;"id ='bt3'>-</button>
-          <button onclick="minus2()" style="width:100%;height: 100%;background-color: green;display: none;"id ='bt31'>-</button>
-        </div>
-        <div ></div>
-        <div></div>
-        <div >
-          <button  onclick="minus2()" style="width:100%;height: 100%;"id ='bt4'>-</button>
-          <button  onclick="minus1()" style="width:100%;height: 100%;background-color: green;display: none;"id ='bt41'>-</button>
-        </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-transparent" style="display:none" id="leftMenu">
+    <button onclick="closeLeftMenu()" class="w3-bar-item w3-button  w3-blue">Close &times;</button>
+    <hr>
+    <div style="padding: 10px;">
+    <p style="color: aliceblue;">Masukan Nama Team 1</p>
+    <input type="text" style="width: 90%;" placeholder="Nama Team 1" id ='inp1'>
     </div>
-<!-- partial -->
+    <div style="padding: 10px;">
+    <p style="color: aliceblue;">Masukan Nama Team 2</p>
+    <input type="text" style="width: 90%;" placeholder="Nama Team 2" id ='inp2'>
+    <hr>
+    <button class="w3-button w3-red" onclick="reset()">reset</button>
+    <a href="/board.html" class="w3-button w3-purple" onclick="inputan()">lanjutkan </a>
+    </div>
+    <hr>
+</div>
 
-<script src="firebase.js"></script>
-  <script>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-button" style="display:none;right:0;" id="rightMenu">
+  <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+
+<div class="w3-blue" style="padding: 10px;">
+  <button class="w3-button w3-yellow w3-left"  onclick="openLeftMenu()"><i class="material-icons">&#xe7fd;</i>Tunggal </button>
+  <button class="w3-button w3-yellow w3-right" onclick="openRightMenu()">Beregu <i class="material-icons">&#xe7fb;</i></button>
+</div>
+<div class="w3-container">
+ 
+  <div class="w3-panel w3-card w3-yellow"><p><a href="/tampilan.html">Halaman Scoring </a>  <img src="/Capture2.PNG" alt="" srcset="" width="250px" style="padding: 10px;"></p>
+
+  </div>
+  <div class="w3-panel w3-card-2 w3-blue"><p><a href="/board.html">Halaman Control </a>  <img src="/Capture1.PNG" alt="" srcset="" width="250px" style="padding: 10px;"></p>
+
+  </div>
   
-  var config = {
+</div>
+<script src="firebase.js"></script>   
+<script>
+
+var config = {
   apiKey: "AIzaSyBYVwVZUBLXSm7iR5Fp6k-dziJGEuhwExk",
   authDomain: "megaboth007.firebaseapp.com",
   databaseURL: "https://megaboth007.firebaseio.com",
@@ -78,38 +55,14 @@
   storageBucket: "megaboth007.appspot.com",
   messagingSenderId: "942424390212",
   appId: "1:942424390212:web:c3622743b0fba57b5a1a11"
-
   };
 
   firebase.initializeApp(config);
-
-var dbRef = firebase.database();
-var db = firebase.database();
-var datab1 = db.ref("/tinc");
-var datab2 = db.ref("/tinb");
-var datar1 = db.ref("/r1");
-var datar2 = db.ref("/r2");
-var datain1 = db.ref("/inp1");
-var datain2 = db.ref("/inp2");
-
-var datain11 = db.ref("/inp2");
-var datain21 = db.ref("/inp1");
-
-for (let i = 0; i < 5; i++) {
-  datab1.on("value", function(snapshot) {document.getElementById("score1").innerHTML= snapshot.val();});
-  datab2.on("value", function(snapshot) {document.getElementById("score2").innerHTML= snapshot.val();});
-  datab1.on("value", function(snapshot) {document.getElementById("ss2").innerHTML= snapshot.val();});
-  datab2.on("value", function(snapshot) {document.getElementById("ss1").innerHTML= snapshot.val();});
-  datain1.on("value", function(snapshot) {document.getElementById("inpp1").innerHTML= snapshot.val();});
-  datain2.on("value", function(snapshot) {document.getElementById("inpp2").innerHTML= snapshot.val();});
-  datain11.on("value", function(snapshot) {document.getElementById("inpp11").innerHTML= snapshot.val();});
-  datain21.on("value", function(snapshot) {document.getElementById("inpp21").innerHTML= snapshot.val();});
-
-  var a1 = 0;
-  var b1 = 0;
-
-  dbRef.ref("/tinc").on('value', snap => a1 = snap.val());
-  dbRef.ref("/tinb").on('value', snap => b1 = snap.val());
+  var db = firebase.database();
+  var datain1 = db.ref("/inp1");
+  var datain2 = db.ref("/inp2");
+  datain1.on("value", function(snapshot) {document.getElementById("inp1").value= snapshot.val();});
+  datain2.on("value", function(snapshot) {document.getElementById("inp2").value= snapshot.val();});
 
   function inputan(){
     var in1 = document.getElementById('inp1').value ;
@@ -119,29 +72,7 @@ for (let i = 0; i < 5; i++) {
     console.log(in1)
   }
 
-  function plus1(){
-    a1=a1+1;
-    db.ref("/tinc").set(a1);
-    db.ref("/r1").set(a1);
-  }
-
-  function minus1(){
-    a1=a1-1;
-    db.ref("/tinc").set(a1);
-    db.ref("/r1").set(a1);
-  }
-  function plus2(){
-    b1=b1+1;
-    db.ref("/tinb").set(b1);
-    db.ref("/r2").set(b1);
-  }
-  function minus2(){
-    b1=b1-1;
-    db.ref("/tinb").set(b1);
-    db.ref("/r2").set(b1);
-  }
-
-function reset(){
+  function reset(){
   db.ref("/tinb").set(0);
   db.ref("/tinc").set(0);
   db.ref("/r1").set(0);
@@ -152,49 +83,22 @@ function reset(){
 
 }
 
-function pindah1(){
-  document.getElementById('score1').style.display   = 'none';
-  document.getElementById('score2').style.display   = 'none';
-  document.getElementById('ss1').style.display      =  'block' ;
-  document.getElementById('ss2').style.display      =  'block' ;
-  document.getElementById('bt1').style.display      =  'none' ;
-  document.getElementById('bt2').style.display      =  'none' ;
-  document.getElementById('bt3').style.display      =  'none' ;
-  document.getElementById('bt4').style.display      =  'none' ;
-  document.getElementById('bt11').style.display     =  'block' ;
-  document.getElementById('bt21').style.display     =  'block' ;
-  document.getElementById('bt31').style.display     =  'block' ;
-  document.getElementById('bt41').style.display     =  'block' ;
-  document.getElementById('inpp21').style.display   =  'block' ;
-  document.getElementById('inpp11').style.display   =  'block' ;
-  document.getElementById('inpp2').style.display    =  'none' ;
-  document.getElementById('inpp1').style.display    =  'none' ;
-
+function openLeftMenu() {
+  document.getElementById("leftMenu").style.display = "block";
 }
 
-function pindah2(){
-  document.getElementById('ss1').style.display    = 'none';
-  document.getElementById('ss2').style.display    = 'none';
-  document.getElementById('score1').style.display =  'block' ;
-  document.getElementById('score2').style.display =  'block' ;
-  document.getElementById('bt1').style.display    =  'block' ;
-  document.getElementById('bt2').style.display    =  'block' ;
-  document.getElementById('bt3').style.display    =  'block' ;
-  document.getElementById('bt4').style.display    =  'block' ;
-  document.getElementById('bt11').style.display   =  'none' ;
-  document.getElementById('bt21').style.display   =  'none' ;
-  document.getElementById('bt31').style.display   =  'none' ;
-  document.getElementById('bt41').style.display   =  'none' ;
-  document.getElementById('inpp2').style.display  =  'block' ;
-  document.getElementById('inpp1').style.display  =  'block' ;
-  document.getElementById('inpp21').style.display =  'none' ;
-  document.getElementById('inpp11').style.display =  'none' ;
+function closeLeftMenu() {
+  document.getElementById("leftMenu").style.display = "none";
 }
 
-
+function openRightMenu() {
+  document.getElementById("rightMenu").style.display = "block";
 }
 
-    
-  </script>
+function closeRightMenu() {
+  document.getElementById("rightMenu").style.display = "none";
+}
+</script>
+
 </body>
 </html>

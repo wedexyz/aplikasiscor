@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Scoring Board</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* Container for flexboxes */
+.row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Create three equal columns that sits next to each other */
+.column {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h2>SCORING BOARD</h2>
+</div>
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h1 id ="inpp1"></h1>
+    <h1 id = "score1"></h1>
+</div>
+  <div class="column" style="background-color:#ccc;">
+    <h1 id ="inpp2"></h1>
+    <h1 id = "score2"></h1>
+</div>
+</div>
+
+<div class="footer">
+  <p>Versi Betha</p>
+</div>
+<script src="firebase.js"></script>
+<script>
+
+var config = {
+  apiKey: "AIzaSyBYVwVZUBLXSm7iR5Fp6k-dziJGEuhwExk",
+  authDomain: "megaboth007.firebaseapp.com",
+  databaseURL: "https://megaboth007.firebaseio.com",
+  projectId: "megaboth007",
+  storageBucket: "megaboth007.appspot.com",
+  messagingSenderId: "942424390212",
+  appId: "1:942424390212:web:c3622743b0fba57b5a1a11"
+  };
+
+  firebase.initializeApp(config);
+  var db = firebase.database();
+  var datab1 = db.ref("/tinc");
+  var datab2 = db.ref("/tinb");
+  var datain1 = db.ref("/inp1");
+  var datain2 = db.ref("/inp2");
+  datab1.on("value", function(snapshot) {document.getElementById("score1").innerHTML= snapshot.val();});
+  datab2.on("value", function(snapshot) {document.getElementById("score2").innerHTML= snapshot.val();});
+  datain1.on("value", function(snapshot) {document.getElementById("inpp1").innerHTML= snapshot.val();});
+  datain2.on("value", function(snapshot) {document.getElementById("inpp2").innerHTML= snapshot.val();});
+  
+</script>
+</body>
+</html>
+
+
